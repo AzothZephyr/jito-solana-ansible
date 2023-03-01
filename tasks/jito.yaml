@@ -1,0 +1,12 @@
+# Download jito-solana
+- name: Clone a jito-solana repo to /src/jito-solana
+- name: Git checkout
+  ansible.builtin.git:
+    repo: 'https://foosball.example.org/path/to/repo.git'
+    dest: /srv/checkout
+    version: release-0.22
+# Compile jito-solana
+
+# move binary to /usr/bin/local/
+
+# change systemd unit file to reflect proper binary

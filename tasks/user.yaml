@@ -1,0 +1,25 @@
+- name: create toor group
+  become: true
+  become_user: root
+  group:
+    name: toor
+    state: present
+
+- name: create toor user
+  become: true
+  become_user: root
+  user:
+    name: toor
+    create_home: yes
+    groups: toor
+    shell: /bin/bash
+
+- name: toor user to have passwordless sudo
+  become: true
+  become_user: root
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^toor'
+    line: 'toor ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'

@@ -1,0 +1,22 @@
+---
+# defaults file for Solana RPC
+solana_version: "v1.13.5"
+
+# jito-solana values, 
+use_jito_solana: false
+jito_solana_version: "v1.13.6-jito"
+jito_block_engine_url:
+jito_relayer_url:
+jito_shred_receiver_url:
+
+# shared values between solana and jito-solana
+raw_disk_list: ["/dev/nvme1n1", "/dev/nvme2n1"]
+setup_disks: "true"
+download_snapshot: "true"
+ramdisk_size: 300
+swap_mb: "100000"
+
+# UFW
+enable_ufw: true
+allowed_networks:
+  - 89.147.111.25

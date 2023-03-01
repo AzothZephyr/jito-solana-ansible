@@ -1,0 +1,44 @@
+- name: Allow port range 8000-10000
+  community.general.ufw:
+    rule: allow
+    port: 8000:10000
+    proto: tcp
+
+- name: Deny all access to port 8899
+  community.general.ufw:
+    rule: deny
+    port: '8899'
+
+- name: Deny all access to port 8900
+  community.general.ufw:
+    rule: deny
+    port: '8900'
+
+- name: Allow all access to ips and networks in authorized_networks list
+  community.general.ufw:
+    rule: allow
+    src: '{{ item }}'
+  loop: {{ authorized_networks }}
+ 
+- name: Allow all access from RFC1918 networks to this host
+  community.general.ufw:
+    rule: allow
+    src: '{{ item }}'
+  loop:
+    - 10.0.0.0/8
+    - 172.16.0.0/12
+    - 192.168.0.0/16
+
+# ufw supports connection rate limiting, which is useful for protecting
+# against brute-force login attacks. ufw will deny connections if an IP
+# address has attempted to initiate 6 or more connections in the last
+# 30 seconds. See  http://www.debian-administration.org/articles/187
+# for details.
+- community.general.ufw:
+    rule: limit
+    port: ssh
+    proto: tcp
+
+- name: enable UFW
+  community.general.ufw:
+    state: enabled

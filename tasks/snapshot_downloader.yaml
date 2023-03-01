@@ -1,0 +1,13 @@
+- name: install snapshot requirements
+  become: true
+  become_user: solana
+  ansible.builtin.pip:
+    name:
+      - tqdm
+      - requests
+    executable: pip3
+
+- name: download latest snapshot
+  become: true
+  become_user: solana
+  shell: python3 /mnt/snapshot-finder.py --snapshot_path /mnt/solana-snapshots
