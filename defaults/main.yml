@@ -3,19 +3,14 @@
 
 raw_disk_list: ["/dev/nvme1n1", "/dev/nvme2n1"]
 setup_disks: "true"
-download_snapshot: "true"
+download_snapshot: "false"
 ramdisk_size: 128
 swap_mb: "100000"
-
+allowed_ips:
+  - 192.16.0.0/24
+  - 192.16.1.69
 
 jito_solana_version: "v1.13.6-jito"
 jito_block_engine_url: https://ny.mainnet.block-engine.jito.wtf
 jito_relayer_url: http://ny.mainnet.relayer.jito.wtf:8100
 jito_shred_receiver_url: 141.98.216.96:1002
-
-
-enable_rpc: false
-enable_ufw: false
-ufw_access_list:
-  - 192.168.0.0/24
-  - 192.168.1.69

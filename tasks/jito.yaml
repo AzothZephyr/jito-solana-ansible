@@ -1,4 +1,4 @@
-# set environmental variables for jito client
+# set environment variables for jito client
 - name: add relayer url environment variable
   become: true
   become_user: root
@@ -22,3 +22,13 @@
     path: /etc/environment
     line: SHRED_RECEIVER_ADDR={{ jito_shred_receiver_url }}
     create: yes
+
+- name: copy validator keys
+  become: true
+  become_user: solana
+  ansible.builtin.copy:
+    src: files/keys/mainnet.json
+    dest: /home/solana/.identity.json
+    owner: solana
+    group: solana
+    mode: '0600'

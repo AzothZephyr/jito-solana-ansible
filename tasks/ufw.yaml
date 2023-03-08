@@ -14,11 +14,11 @@
     rule: deny
     port: '8900'
 
-- name: Allow all access to ips and networks in authorized_networks list
+- name: Allow all access to ips and networks in allowed_ips list
   community.general.ufw:
     rule: allow
     src: '{{ item }}'
-  loop: {{ authorized_networks }}
+  loop: {{ allowed_ips }}
  
 - name: Allow all access from RFC1918 networks to this host
   community.general.ufw:

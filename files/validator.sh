@@ -9,7 +9,7 @@ exec /mnt/solana/target/release/solana-validator \
 --relayer-url ${RELAYER_URL} \
 --block-engine-url ${BLOCK_ENGINE_URL} \
 --shred-receiver-address ${SHRED_RECEIVER_ADDR} \
---identity /home/solana/rpc_node.json \
+--identity /home/solana/.identity.json \
 --entrypoint entrypoint.mainnet-beta.solana.com:8001 \
 --entrypoint entrypoint2.mainnet-beta.solana.com:8001 \
 --entrypoint entrypoint3.mainnet-beta.solana.com:8001 \
