@@ -1,11 +1,7 @@
 #!/bin/bash
 export SOLANA_METRICS_CONFIG="host=https://metrics.solana.com:8086,db=mainnet-beta,u=mainnet-beta_write,p=password"
 
-BLOCK_ENGINE_URL={ jito_block_engine_url }
-RELAYER_URL={ jito_relayer_url }
-SHRED_RECEIVER_ADDR={ jito_shred_receiver_url }
-
-exec /mnt/solana/target/release/jito-solana-validator \
+exec /mnt/solana/target/release/solana-validator \
 --tip-payment-program-pubkey T1pyyaTNZsKv2WcRAB8oVnk93mLJw2XzjtVYqCsaHqt \
 --tip-distribution-program-pubkey 4R3gSG8BpU4t19KYj8CfnbtRpnT8gtk4dvTHxVRwc2r7 \
 --merkle-root-upload-authority GZctHpWXmsZC1YHACTGGcHhYxjdRqQvTpYkb9LMvxDib \

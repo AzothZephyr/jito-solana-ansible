@@ -1,12 +1,24 @@
-# Download jito-solana
-- name: Clone a jito-solana repo to /src/jito-solana
-- name: Git checkout
-  ansible.builtin.git:
-    repo: 'https://foosball.example.org/path/to/repo.git'
-    dest: /srv/checkout
-    version: release-0.22
-# Compile jito-solana
+# set environmental variables for jito client
+- name: add relayer url environment variable
+  become: true
+  become_user: root
+  ansible.builtin.lineinfile:
+    path: /etc/environment
+    line: RELAYER_URL={{ jito_relayer_url }}
+    create: yes
 
-# move binary to /usr/bin/local/
+- name: add block engine url environment variable
+  become: true
+  become_user: root
+  ansible.builtin.lineinfile:
+    path: /etc/environment
+    line: BLOCK_ENGINE_URL={{ jito_block_engine_url }}
+    create: yes
 
-# change systemd unit file to reflect proper binary
+- name: add shred receiver environment variable
+  become: true
+  become_user: root
+  ansible.builtin.lineinfile:
+    path: /etc/environment
+    line: SHRED_RECEIVER_ADDR={{ jito_shred_receiver_url }}
+    create: yes
