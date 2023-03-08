@@ -61,42 +61,8 @@ cd jito-solana-ansible
 at this point, you've got your ansible playbook on the server you are deploying to. below is a description of the ansible parameters that can be modified for your specific set up, they are found in `defaults/main.yml`.
 
 ```
-# defaults file for Solana RPC
-# solana_version: version of solana that we want to run. Check the Solana Tech discord’s mb-announcements channel for the recommended version.
-solana_version: "v1.13.5"
-
-# jito-solana values, 
-use_jito_solana: true
-jito_solana_version: "v1.13.6-jito"
-
-# jito-solana requires 3 environmental variables
-jito_block_engine_url: 
-jito_relayer_url:
-jito_shred_receiver_url:
-
-# shared values between solana and jito-solana
-# --
-# raw_disk_list: the list of currently unmounted disks that will be used by the validator software
-raw_disk_list: ["/dev/nvme1n1", "/dev/nvme2n1"]
-
-# sets up the disks by wiping, raiding, formatting with ext4, and mounting to /mnt
-setup_disks: "true"
-# toggles whether snapshots or downloaded or not
-download_snapshot: "true"
-
-
-# ramdisk_size: this is optional and only necessary if you want to use ramdisk for the validator - carves out a large portion of the RAM to store the accountsdb. On a 512 GB RAM instance, this can be set to 300 GB (variable value is in GB so 300)
-ramdisk_size: 300
-
-# megabytes of swap. This can be set this to 50% of RAM or even lower. 100 GB is fine on a 512 GB RAM machine (variable value is in MB so 100000)
-swap_mb: "100000"
-
-# UFW
-enable_ufw: true
-allowed_networks: # networks and ips allowed by UFW to access RPC for private methods such as get program accounts on 8899 and 8900, does not impact validator to validator communication.
-  - 89.147.111.25
+vim defaults/main.yml
 ```
-
 
 
 ### Step 6: Run the ansible command
@@ -111,7 +77,7 @@ time ansible-playbook runner.yaml
 ```
 
 
-### Step 7: Once ansible finishes, switch to the solana user with:
+### Step 7: Once ansible finishes, switch to the solana user:
 
 ```
 sudo su - solana
