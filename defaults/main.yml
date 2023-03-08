@@ -1,22 +1,21 @@
 ---
-# defaults file for Solana RPC
-solana_version: "v1.13.5"
+# defaults file for Solana validator
 
-# jito-solana values, 
-use_jito_solana: false
+# you can find the latest version here:
+# https://github.com/jito-foundation/jito-solana/releases
 jito_solana_version: "v1.13.6-jito"
-jito_block_engine_url:
-jito_relayer_url:
-jito_shred_receiver_url:
+
+# environmental variables required by jito-solana
+# these should be configured according to where you've deployed your
+# server, and a list of available infra can be found here:
+# https://jito-labs.gitbook.io/mev/searcher-resources/block-engine/mainnet-addresses
+jito_block_engine_url: https://ny.mainnet.block-engine.jito.wtf
+jito_relayer_url: http://ny.mainnet.relayer.jito.wtf:8100
+jito_shred_receiver_url: 141.98.216.96:1002
 
 # shared values between solana and jito-solana
 raw_disk_list: ["/dev/nvme1n1", "/dev/nvme2n1"]
 setup_disks: "true"
 download_snapshot: "true"
-ramdisk_size: 300
+ramdisk_size: 128
 swap_mb: "100000"
-
-# UFW
-enable_ufw: true
-allowed_networks:
-  - 89.147.111.25

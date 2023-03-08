@@ -2,40 +2,27 @@
 
 ### What is it good for?
 
-The goal of the jito-solana ansible playbook is to stand up a jito-solana validator for Solana blockchain. It formats/raids/mounts disks, sets up swap, ramdisk (optional), downloads from snapshot and restarts the software leaving you with a running validator deployed with used ansible for automation and auditability of server configuratoin. 
+The goal of the jito-solana ansible playbook is to stand up a jito-solana validator for Solana blockchain. It formats/raids/mounts disks, sets up swap, ramdisk (optional), downloads from snapshot and restarts the software leaving you with a running validator deployed with ansible used for automation and auditability of server configuration. 
 
 
 ---
 
 ##  Server Selection:
-At the time of writing, the below specs are sufficient for each given role. We're using Latitude.sh
-
- - the initial state of the machine is cleaner than others that we have tried
+We're using [Latitude.sh](https://latitude.sh) as an infrastructure provider for the following reasons:
+  - the initial state of the machine is cleaner than others that we have tried
   - disks are named consistently (nvme01, nvme0n2)
   - ubuntu installed (preferably ubuntu 20.04, 22.04) - this won't work with centos, etc. since they don't use aptitude by default
   - the login user being ubuntu helps (all the solana operations are done using the solana user that the ansible playbook creates)
   - ubuntu is in the sudoer's list
   - unmounted disks are clean - if your root is on one of partitions and you pass it as an argument, this could be disastrous
 
-### Validator (c3.large.x86):
-For a jito-solana validator, it is currently built specifically for a Latitude.sh a c3.large.x86 machine.
-
-Server specs:
-- CPU: AMD EPYC 7443P @ 2.85GHz (24 cores)
-- RAM: 256 GB
-- Disk: 2 X 2 TB NVMe
-- NICs: 10 Gbit/s + 1 Gbit/s
-
--- 
-### RPC node (s3.large.x86):
-For an RPC, it's built specifically for a Latitude.sh s3.large.x86 machine.
-
---
-
-### RPC node with full indexing (m3.large.x86):
-
-For an RPC with full indexing, it's built specifically for a Latitude.sh m3.large.x86 machine. 
-
+The box we're deploying to at [Latitude.sh](https://latitude.sh) is s3.large.x86. The specs for this box are below if you choose to use a different provider.
+```
+CPU:  AMD EPYC 7413 @ 2.65GHz (24 cores)
+RAM: 512 GB
+Disk: 2 X 4 TB NVMe + 256 GB NVMe
+NICs: 4 X 10 Gbit/s + 1 Gbit/s
+```
 
 --- 
 
