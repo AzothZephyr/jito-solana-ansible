@@ -1,12 +1,3 @@
-- name: solana repository
-  become: true
-  become_user: solana
-  git:
-    repo: 'https://github.com/solana-labs/solana.git'
-    dest: /mnt/solana
-    version: tags/{{ solana_version }}
-  when: use_jito_solana == false
-
 - name: jito-solana repository
   become: true
   become_user: solana
@@ -14,9 +5,8 @@
     repo: 'https://github.com/jito-foundation/jito-solana.git'
     dest: /mnt/solana
     version: tags/{{ jito_solana_version }}
-  when: use_jito_solana|default(false)|bool == true
 
-- name: build solana
+- name: build jito-solana
   become: true
   become_user: solana
   shell: source /home/solana/.cargo/env && /mnt/solana/cargo build --release

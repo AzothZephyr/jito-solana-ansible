@@ -1,22 +1,16 @@
 ---
-# defaults file for Solana RPC
-solana_version: "v1.13.5"
+# defaults file for jito-solana validator
 
-# jito-solana values, 
-use_jito_solana: false
-jito_solana_version: "v1.13.6-jito"
-jito_block_engine_url:
-jito_relayer_url:
-jito_shred_receiver_url:
-
-# shared values between solana and jito-solana
 raw_disk_list: ["/dev/nvme1n1", "/dev/nvme2n1"]
 setup_disks: "true"
 download_snapshot: "true"
-ramdisk_size: 300
+ramdisk_size: 256
 swap_mb: "100000"
+# allowed_ips:
+#   - 192.16.0.0/24
+#   - 192.16.1.69
 
-# UFW
-enable_ufw: true
-allowed_networks:
-  - 89.147.111.25
+jito_solana_version: "v1.13.6-jito"
+jito_block_engine_url: https://ny.mainnet.block-engine.jito.wtf
+jito_relayer_url: http://ny.mainnet.relayer.jito.wtf:8100
+jito_shred_receiver_url: 141.98.216.96:1002
