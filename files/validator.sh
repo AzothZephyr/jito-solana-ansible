@@ -11,6 +11,7 @@ exec /mnt/solana/target/release/solana-validator \
 --block-engine-url $BLOCK_ENGINE_URL \
 --shred-receiver-address $SHRED_RECEIVER_ADDR \
 --identity /home/solana/.identity.json \
+--vote-account /home/solana/.identity.json \
 --entrypoint entrypoint.mainnet-beta.solana.com:8001 \
 --entrypoint entrypoint2.mainnet-beta.solana.com:8001 \
 --entrypoint entrypoint3.mainnet-beta.solana.com:8001 \
