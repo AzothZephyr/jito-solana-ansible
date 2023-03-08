@@ -18,8 +18,8 @@ swap_mb: "100000"
 jito_solana_version: "v1.13.6-jito"
 
 # environmental variables required by jito-solana
-# these should be configured according to where you've deployed your server, and a list of available infra can be found here:
-# https://jito-labs.gitbook.io/mev/searcher-resources/block-engine/mainnet-addresses
+# these should be configured according to where you've deployed your server
+# a list of publicly available infra can be found here: https://jito-labs.gitbook.io/mev/searcher-resources/block-engine/mainnet-addresses
 jito_block_engine_url: https://ny.mainnet.block-engine.jito.wtf
 jito_relayer_url: http://ny.mainnet.relayer.jito.wtf:8100
 jito_shred_receiver_url: 141.98.216.96:1002

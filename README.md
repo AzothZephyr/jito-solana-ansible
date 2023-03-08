@@ -30,39 +30,42 @@ NICs: 4 X 10 Gbit/s + 1 Gbit/s
 After creation of the machine in the Latitude UI, you can deploy the jito-solana validator software as so.
 
 
-### Step 1: Deploy and SSH into your machine
-
-### Step 2: Start a screen session
-
-```
-screen -S sol
-```
-
-### Step 3: Install ansible
+### Step 1: Install ansible
 
 ```
 sudo apt-get update && sudo apt-get install ansible -y
 ```
 
-### Step 4: Clone the jito-solana-ansible repository
+### Step 2: Clone the jito-solana-ansible repository
 
 ```
 git clone https://github.com/AzothZephyr/jito-solana-ansible.git
 ```
 
-### Step 5: cd into the jito-solana-ansible folder
+### Step 3: cd into the jito-solana-ansible folder
 
 ```
 cd jito-solana-ansible
 ```
 
+### Step 4: configure ansible inventory and configuration parameters
+
+#### ansible inventory
+the ansible inventory is used to define the remote servers were deploying to. there are two groups: mainnet and testnet. place the ip address of your box in this file under the respective groups.
+
+```
+vim inventory/hosts.yaml
+```
+
+#### validator identity keys
+identity keys for the deployed validator are stored in files/keys/mainnet.json and files/keys/testnet.json. 
+
+```
+  // solana keygen output here
+```
 
 #### ~ Parameters explained ~
-at this point, you've got your ansible playbook on the server you are deploying to. below is a description of the ansible parameters that can be modified for your specific set up, they are found in `defaults/main.yml`.
-
-```
-vim defaults/main.yml
-```
+the parameters passed to ansible are defined in defaults/main.yml and documented in defaults/README.md
 
 
 ### Step 6: Run the ansible command
@@ -110,10 +113,3 @@ Ledger location: /mnt/solana-ledger
 ```
 solana catchup --our-localhost
 ```
-
-If you see the message above, then everything is working fine! Gratz. You have a new RPC server and you can visit the URL at http://xx.xx.xx.xx:8899/
-
-
-
-## TODO:
-- adapt deployment steps and documentation away from using the server we're deploying to as a client, and follow a model where you deploy keys to a remote server and use a hosts file to execute the playbook 
