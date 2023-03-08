@@ -2,7 +2,7 @@
 
 ### What is it good for?
 
-The goal of the jito-solana ansible playbook is to stand up a jito-solana validator for Solana blockchain. It formats/raids/mounts disks, sets up swap, ramdisk (optional), downloads from snapshot and restarts the software leaving you with a running validator deployed with ansible used for automation and auditability of server configuration. 
+The goal of this ansible playbook is to stand up a jito-solana validator for Solana blockchain. It formats/raids/mounts disks, sets up swap, ramdisk (optional), downloads from snapshot and restarts the software leaving you with a running validator deployed with ansible used for automation and auditability of server configuration. 
 
 
 ---
@@ -48,7 +48,7 @@ git clone https://github.com/AzothZephyr/jito-solana-ansible.git
 cd jito-solana-ansible
 ```
 
-### Step 4: configure ansible inventory and configuration parameters
+### Step 4: configure ansible inventory, manage solana keys, and configuration parameters
 
 #### ansible inventory
 the ansible inventory is used to define the remote servers were deploying to. there are two groups: mainnet and testnet. place the ip address of your box in this file under the respective groups.
@@ -58,7 +58,7 @@ vim inventory/hosts.yaml
 ```
 
 #### validator identity keys
-identity keys for the deployed validator are stored in files/keys/mainnet.json and files/keys/testnet.json. 
+identity keys for the deployed validator are stored in files/keys/mainnet.json and files/keys/testnet.json. it is recommended to generate them locally and store them for safe keeping in case you need to roll out another validator.
 
 ```
   // solana keygen output here

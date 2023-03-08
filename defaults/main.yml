@@ -3,8 +3,8 @@
 
 raw_disk_list: ["/dev/nvme1n1", "/dev/nvme2n1"]
 setup_disks: "true"
-download_snapshot: "false"
-ramdisk_size: 128
+download_snapshot: "true"
+ramdisk_size: 256
 swap_mb: "100000"
 allowed_ips:
   - 192.16.0.0/24
