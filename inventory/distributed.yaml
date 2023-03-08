@@ -1,9 +1,0 @@
-all:
-    mainnet:
-      hosts:
-        nyc-mainnet.example.com:
-        tokyo-mainnet.example.com:
-    testnet:
-      hosts:
-        nyc-testnet.example.com:
-        tokyo-testnet.example.com:

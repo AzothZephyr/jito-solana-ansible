@@ -1,0 +1,19 @@
+# example yaml for multi datacenter deployment
+# the region specific flags can be utilized for region specific needs, such as ntp
+all:
+    mainnet:
+      hosts:
+        nyc-mainnet.example.com:
+        tokyo-mainnet.example.com:
+    testnet:
+      hosts:
+        nyc-testnet.example.com:
+        tokyo-testnet.example.com:
+    tokyo:
+      hosts:
+        tokyo-mainnet.example.com: 
+        tokyo-testnet.example.com: 
+    nyc:
+      hosts:
+        nyc-mainnet.example.com: 
+        nyc-testnet.example.com: 
