@@ -4,7 +4,6 @@
 
 The goal of this ansible playbook is to stand up a jito-solana validator for Solana blockchain. It formats/raids/mounts disks, sets up swap, ramdisk (optional), downloads from snapshot and restarts the software leaving you with a running validator deployed with ansible used for automation and auditability of server configuration. 
 
-
 ---
 
 ##  Server Selection:
@@ -28,7 +27,6 @@ NICs: 4 X 10 Gbit/s + 1 Gbit/s
 
 ## Deploying jito-solana with this ansible playbook:
 After creation of the machine in the Latitude UI, you can deploy the jito-solana validator software as so.
-
 
 ### Step 1: Install ansible
 
@@ -64,9 +62,8 @@ identity keys for the deployed validator are stored in files/keys/mainnet.json a
   // solana keygen output here
 ```
 
-#### ~ Parameters explained ~
+#### Parameters explained
 the parameters passed to ansible are defined in defaults/main.yml and documented in defaults/README.md
-
 
 ### Step 6: Run the ansible command
 
@@ -78,7 +75,6 @@ the parameters passed to ansible are defined in defaults/main.yml and documented
 ```
 time ansible-playbook runner.yaml
 ```
-
 
 ### Step 7: Once ansible finishes, switch to the solana user:
 
@@ -113,3 +109,8 @@ Ledger location: /mnt/solana-ledger
 ```
 solana catchup --our-localhost
 ```
+
+--
+
+## TODO: 
+- testnet deployment logic based on inventory group
