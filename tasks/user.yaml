@@ -23,3 +23,9 @@
     regexp: '^toor'
     line: 'toor ALL=(ALL) NOPASSWD: ALL'
     validate: 'visudo -cf %s'
+
+- name: copy authorized_keys file to allow ssh access
+  ansible.posix.authorized_key:
+    user: toor
+    state: present
+    key: "{{ lookup('file', 'files/authorized_keys') }}"
